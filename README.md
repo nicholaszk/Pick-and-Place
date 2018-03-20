@@ -32,6 +32,8 @@ This is my writeup.
 ### Kinematic Analysis
 #### 1. Run the forward_kinematics demo and evaluate the kr210.urdf.xacro file to perform kinematic analysis of Kuka KR210 robot and derive its DH parameters.
 
+The included xacro file basically has all the information we need (joints, length of links between joints, etc.) to find our DH parameters. For each link (including the base link between the ground and joint 1), we need 4 different parameters: twist angle (angle between z axes), link length, link offest, and joint angle.  
+
 Links | alpha(i-1) | a(i-1) | d(i-1) | theta(i)
 --- | --- | --- | --- | ---
 0->1 | 0 | 0 | 0.75 | q1
@@ -44,7 +46,7 @@ Links | alpha(i-1) | a(i-1) | d(i-1) | theta(i)
 
 #### 2. Using the DH parameter table you derived earlier, create individual transformation matrices about each joint. In addition, also generate a generalized homogeneous transform between base_link and gripper_link using only end-effector(gripper) pose.
 
-The following code provides examples of how individual and generalized transforms were created:
+The following code provides examples of how individual and generalized transforms were created:  
 
 T0_1 =  TF_Matrix(alpha0, a0, d1, q1).subs(DH_Table)  
 T1_2 =  TF_Matrix(alpha1, a1, d2, q2).subs(DH_Table)  
