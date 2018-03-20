@@ -48,10 +48,10 @@ Links | alpha(i-1) | a(i-1) | d(i-1) | theta(i)
 
 The following code provides examples of how individual and generalized transforms were created:
 
-**T0_1 =  TF_Matrix(alpha0, a0, d1, q1).subs(DH_Table)  
+T0_1 =  TF_Matrix(alpha0, a0, d1, q1).subs(DH_Table)  
 T1_2 =  TF_Matrix(alpha1, a1, d2, q2).subs(DH_Table)  
-...
-T6_EE = TF_Matrix(alpha6, a6, d7, q7).subs(DH_Table)  **
+...  
+T6_EE = TF_Matrix(alpha6, a6, d7, q7).subs(DH_Table)  
 
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
 
