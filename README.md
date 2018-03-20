@@ -29,27 +29,29 @@ Using inverse kinematics transforms to calculate joint angles for a simulated ar
 
 #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  
 
-You're reading it!
+This is my writeup.
 
 ### Kinematic Analysis
 #### 1. Run the forward_kinematics demo and evaluate the kr210.urdf.xacro file to perform kinematic analysis of Kuka KR210 robot and derive its DH parameters.
-
-Here is an example of how to include an image in your writeup.
-
-![alt text][image1]
-
-#### 2. Using the DH parameter table you derived earlier, create individual transformation matrices about each joint. In addition, also generate a generalized homogeneous transform between base_link and gripper_link using only end-effector(gripper) pose.
 
 Links | alpha(i-1) | a(i-1) | d(i-1) | theta(i)
 --- | --- | --- | --- | ---
 0->1 | 0 | 0 | 0.75 | q1
 1->2 | - pi/2 | 0.35 | 0 | -pi/2 + q2
 2->3 | 0 | 1.25 | 0 | q3
-3->4 |  - pi/2 | -.054 | 1.5 | q4
-4->5 | - pi/2 | 0 | 0 | q5
+3->4 | - pi/2 | -.054 | 1.5 | q4
+4->5 |  pi/2 | 0 | 0 | q5
 5->6 | - pi/2 | 0 | 0 | q6
 6->EE | 0 | 0 | 0.303 | 0
 
+#### 2. Using the DH parameter table you derived earlier, create individual transformation matrices about each joint. In addition, also generate a generalized homogeneous transform between base_link and gripper_link using only end-effector(gripper) pose.
+
+The following code provides examples of how individual and generalized transforms were created:
+
+T0_1 =  TF_Matrix(alpha0, a0, d1, q1).subs(DH_Table)
+T1_2 =  TF_Matrix(alpha1, a1, d2, q2).subs(DH_Table)
+...
+T6_EE = TF_Matrix(alpha6, a6, d7, q7).subs(DH_Table)
 
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
 
