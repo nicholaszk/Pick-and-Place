@@ -17,9 +17,7 @@ Using inverse kinematics transforms to calculate joint angles for a simulated ar
 
 [//]: # (Image References)
 
-[image1]: ./misc_images/misc1.png
-[image2]: ./misc_images/misc3.png
-[image3]: ./misc_images/misc2.png
+[image1]: ./completedplacement.JPG
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/972/view) Points
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
@@ -57,8 +55,6 @@ T6_EE = TF_Matrix(alpha6, a6, d7, q7).subs(DH_Table)
 
 And here's where you can draw out and show your math for the derivation of your theta angles. 
 
-![alt text][image2]
-
 ### Project Implementation
 
 #### 1. Fill in the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. Your code must guide the robot to successfully complete 8/10 pick and place cycles. Briefly discuss the code you implemented and your results. 
@@ -68,4 +64,4 @@ Here I'll talk about the code, what techniques I used, what worked and why, wher
 
 
 And just for fun, another example image:
-![alt text][image3]
+![alt text][image1]
