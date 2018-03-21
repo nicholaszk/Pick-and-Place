@@ -1,6 +1,9 @@
 # Pick-and-Place
-Using inverse kinematics transforms to calculate joint angles for a simulated arm to drop a picked object in a stationary bin
-
+  
+Applying inverse kinematics transforms to calculate joint angles for a simulated arm to drop a designated (picked) object into a stationary bin  
+  
+This project is part of Udacity's Robotics Software Engineering Nanodegree coursework. Outside of the defined steps taken in this README, it can be assumed that other code belongs to Udacity.  
+  
 ## Project: Kinematics Pick & Place
 ---
 
