@@ -64,15 +64,49 @@ def TF_Matrix(alpha, a, d, q):
 
 The following code provides examples of how individual and generalized transforms were created:  
 ```python
+#individual transforms
 T0_1 =  TF_Matrix(alpha0, a0, d1, q1).subs(DH_Table)  
 T1_2 =  TF_Matrix(alpha1, a1, d2, q2).subs(DH_Table)  
   
 T6_EE = TF_Matrix(alpha6, a6, d7, q7).subs(DH_Table)  
 ```
+  
+```python
+#general transform
+T0_EE = T0_1 * T1_2 * T2_3 * T3_4 * T4_5 * T5_6 * T6_EE
+```
 
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
 
-And here's where you can draw out and show your math for the derivation of your theta angles. 
+The provided code from Udacity extracts the yaw, pitch, roll, and location of the end effector from the request. We are left with the postion of the wrist center after the following code:  
+
+```python
+#calculating the wrist center coordinates
+WC = EE - (0.303) * ROT_EE[:,2]
+```  
+
+To find theta1, we simply takes the arctangent of the x and y ground coordinates of the WC as follows:
+
+```python
+#calculate theta1
+theta1 = atan2(WC[1], WC[0])
+```
+
+Theta2 and theta3 are also very straight forward in concept. Using the coordinates of the WC and basic trigonometry, we can find the distance between the base (the end of 90 degree ELL piece) and the WC. Combining that distance with two link lengths, we have a triangle with all 3 side lengths known. Therefore, we can use cosine law for SSS triangles to calculate all 3 interior angles, ultimately leading us to the exterior angles that will become theta2 and theta3. The walkthough also brings up the point of sag in link 4 and presents a solution for mitigating. The python code is as follows:   
+  
+```python
+# SSS triangle for theta2 and theta3
+    	side_a = 1.501
+    	side_b = sqrt(pow((sqrt(WC[0] * WC[0] + WC[1] * WC[1]) - 0.35), 2) + pow((WC[2] - 0.75), 2))
+    	side_c = 1.25
+
+    	angle_a = acos((side_b * side_b + side_c * side_c - side_a * side_a) / (2 * side_b * side_c))
+    	angle_b = acos((side_a * side_a + side_c * side_c - side_b * side_b) / (2 * side_a * side_c))
+    	angle_c = acos((side_a * side_a + side_b * side_b - side_c * side_c) / (2 * side_a * side_b))
+
+      theta2 = pi / 2 - angle_a - atan2(WC[2] - 0.75, sqrt(WC[0] * WC[0] + WC[1] * WC[1]) - 0.35)
+      theta3 = pi / 2 - (angle_b + 0.036)  # 0.036 accounts for sag in link4 of -0.054m
+ ```
 
 ### Project Implementation
 
