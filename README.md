@@ -47,14 +47,28 @@ Links | alpha(i-1) | a(i-1) | d(i-1) | theta(i)
 5->6 | - pi/2 | 0 | 0 | q6
 6->EE | 0 | 0 | 0.303 | 0
 
-#### 2. Using the DH parameter table you derived earlier, create individual transformation matrices about each joint. In addition, also generate a generalized homogeneous transform between base_link and gripper_link using only end-effector(gripper) pose.
+#### 2. Using the DH parameter table you derived earlier, create individual transformation matrices about each joint. In addition, also generate a generalized homogeneous transform between base_link and gripper_link using only end-effector(gripper) pose.  
+  
+The transformation matrix used to move from one link's frame of reference to the next is shown in the following python function:  
+  
+```python
+
+
+def TF_Matrix(alpha, a, d, q):
+    TF = Matrix([[            cos(q),           -sin(q),           0,             a],
+                 [ sin(q)*cos(alpha), cos(q)*cos(alpha), -sin(alpha), -sin(alpha)*d],
+                 [ sin(q)*sin(alpha), cos(q)*sin(alpha),  cos(alpha),  cos(alpha)*d],
+                 [                 0,                 0,           0,             1]])
+    return TF
+```
 
 The following code provides examples of how individual and generalized transforms were created:  
-
+```python
 T0_1 =  TF_Matrix(alpha0, a0, d1, q1).subs(DH_Table)  
 T1_2 =  TF_Matrix(alpha1, a1, d2, q2).subs(DH_Table)  
-...  
+  
 T6_EE = TF_Matrix(alpha6, a6, d7, q7).subs(DH_Table)  
+```
 
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
 
