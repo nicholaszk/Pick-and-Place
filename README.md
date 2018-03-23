@@ -107,7 +107,8 @@ Theta2 and theta3 are also very straight forward in concept. Using the coordinat
       theta2 = pi / 2 - angle_a - atan2(WC[2] - 0.75, sqrt(WC[0] * WC[0] + WC[1] * WC[1]) - 0.35)
       theta3 = pi / 2 - (angle_b + 0.036)  # 0.036 accounts for sag in link4 of -0.054m
  ```
-More code:  
+To find the remaining theta angles, we need to find the rotation matrix <sup>3</sup><sub>6</sub>R so that we can exploit Euler angles. We find <sup>3</sup><sub>6</sub>R by mutliplying the inverse of <sup>0</sup><sub>3</sub>R by <sup>0</sup><sub>6</sub>R. Once we have <sup>3</sup><sub>6</sub>R, we can isolate arctangent equivalents. This was difficult to understand, and I greatly leaned on the Project Walkthrough for the following code:  
+
 ```python
 R0_3 = T0_1[0:3, 0:3] * T1_2[0:3, 0:3] * T2_3[0:3, 0:3]
         R0_3 = R0_3.evalf(subs={q1: theta1, q2: theta2, q3: theta3})
@@ -123,10 +124,7 @@ R0_3 = T0_1[0:3, 0:3] * T1_2[0:3, 0:3] * T2_3[0:3, 0:3]
 ### Project Implementation
 
 #### 1. Fill in the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. Your code must guide the robot to successfully complete 8/10 pick and place cycles. Briefly discuss the code you implemented and your results. 
-
-
-Here I'll talk about the code, what techniques I used, what worked and why, where the implementation might fail and how I might improve it if I were going to pursue this project further.  
-
-
-And just for fun, another example image:
+  
+I have included a screenshot of an object successfully dropped in the bin using my IK_sever.py code.
+  
 ![alt text][image1]
