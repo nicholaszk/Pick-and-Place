@@ -36,8 +36,17 @@ This is my writeup.
 #### 1. Run the forward_kinematics demo and evaluate the kr210.urdf.xacro file to perform kinematic analysis of Kuka KR210 robot and derive its DH parameters.
 
 The included xacro file basically has all the information we need (joints, length of links between joints, etc.) to find our DH parameters. For each link (including the base link between the ground and joint 1), we need 4 different parameters: twist angle (angle between z axes), link length, link offest, and joint angle.  
+  
+The relevant Udacity lesson defines the four parameter names as follows:  
+Twist angle (alpha<sub>i-1</sub>) = angle between Z<sub>i-1</sub> and Z<sub>i</sub> measured about X<sub>i-1</sub> in a right-hand sense  
+Link length (a<sub>i-1</sub>) = distance from Z<sub>i-1</sub> to Z<sub>i</sub> measured along X<sub>i-1</sub> where X<sub>i-1</sub> is perpendicular to both Z<sub>i-1</sub> and Z<sub>i</sub>  
+Link offset ( d<sub>i</sub>) = signed distance from X<sub>i-1</sub> to X<sub>i</sub> measured along Z<sub>i</sub>  
+Joint angle (Theta<sub>i</sub>) = angle between X<sub>i-1</sub> and X<sub>i</sub> measured about Z<sub>i</sub> in a right-hand sense  
+  
+I have included the following figure to model the KR210 joints and illustrate the criteria for DH parameter calculations:  
+![alt text][image2]  
 
-Links | alpha(i-1) | a(i-1) | d(i-1) | theta(i)
+Links | alpha(i-1) | a(i-1) | d(i) | theta(i)
 --- | --- | --- | --- | ---
 0->1 | 0 | 0 | 0.75 | q1
 1->2 | - pi/2 | 0.35 | 0 | -pi/2 + q2
