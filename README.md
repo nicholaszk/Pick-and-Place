@@ -21,7 +21,7 @@ This project is part of Udacity's Robotics Software Engineering Nanodegree cours
 [//]: # (Image References)
 
 [image1]: ./completedplacement.JPG
-[image2]: ./completedplacement.JPG
+[image2]: ./DHcalcs.JPG
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/972/view) Points
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
