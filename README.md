@@ -22,6 +22,7 @@ This project is part of Udacity's Robotics Software Engineering Nanodegree cours
 
 [image1]: ./completedplacement.JPG
 [image2]: ./DHcalcs.JPG
+[image3]: ./theta456Calcs.JPG
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/972/view) Points
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
@@ -117,7 +118,9 @@ Theta2 and theta3 are also very straight forward in concept. Using the coordinat
       theta2 = pi / 2 - angle_a - atan2(WC[2] - 0.75, sqrt(WC[0] * WC[0] + WC[1] * WC[1]) - 0.35)
       theta3 = pi / 2 - (angle_b + 0.036)  # 0.036 accounts for sag in link4 of -0.054m
  ```
-To find the remaining theta angles, we need to find the rotation matrix <sup>3</sup><sub>6</sub>R so that we can exploit Euler angles. We find <sup>3</sup><sub>6</sub>R by mutliplying the inverse of <sup>0</sup><sub>3</sub>R by <sup>0</sup><sub>6</sub>R. Once we have <sup>3</sup><sub>6</sub>R, we can isolate arctangent equivalents. This was difficult to understand, and I greatly leaned on the Project Walkthrough for the following code:  
+To find the remaining theta angles, we need to find the rotation matrix <sup>3</sup><sub>6</sub>R so that we can exploit Euler angles. We find <sup>3</sup><sub>6</sub>R by mutliplying <sup>0</sup><sub>3</sub>R<sup>-1</sup> by <sup>0</sup><sub>6</sub>R. Once we have <sup>3</sup><sub>6</sub>R, we can isolate arctangent equivalents. This was difficult to understand, and I greatly leaned on the Project Walkthrough for the following process and code:  
+![alt text][image3]  
+  
 
 ```python
 R0_3 = T0_1[0:3, 0:3] * T1_2[0:3, 0:3] * T2_3[0:3, 0:3]
