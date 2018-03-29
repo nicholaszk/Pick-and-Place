@@ -45,6 +45,12 @@ Link length (a<sub>i-1</sub>) = distance from Z<sub>i-1</sub> to Z<sub>i</sub> m
 Link offset ( d<sub>i</sub>) = signed distance from X<sub>i-1</sub> to X<sub>i</sub> measured along Z<sub>i</sub>  
 Joint angle (Theta<sub>i</sub>) = angle between X<sub>i-1</sub> and X<sub>i</sub> measured about Z<sub>i</sub> in a right-hand sense  
   
+To provide a few examples, let us consider twist angle and link length. Using the definiton for twist angle above we can see that there is no change between Z<sub>0</sub> and Z<sub>1</sub>, so twist angle or alpha<sub>0</sub> is 0. However, when considering Z<sub>1</sub> and Z<sub>2</sub>, there is a 90 degree change in orientation. We are told to measure about X<sub>i-1</sub> (X<sub>1</sub> in this case) in a right-hand sense. Therefore, the 90 degree change gives us alpha<sub>1</sub> = -90 (or PI/2).  
+  
+To analyze link length, let's consider our second link. Rather than measuring angle offset about X, we are now considering distance offset along X for given Z axes. This is aided by drawing out the model as shown below. With Z<sub>1</sub>, Z<sub>2</sub>, and X<sub>1</sub> clearly labeled, it is easy to recognize a<sub>1</sub> as the second link's top side length (given that link<sub>1-2</sub> is an Ell). a<sub>1</sub> is lebeled in the model.  
+  
+Link offset is calculated similarly to link length, but simply swaps Z axes for X axes and the reference frame is the later joint instead of the former. As for joint angle, the whole idea in this case is that these are variable. The only note to make is that theta<sub>2</sub> will be offset by 90 degrees due to the ell shape of link<sub>1-2</sub>.
+    
 I have included the following figure to model the KR210 joints and illustrate the criteria for DH parameter calculations:  
 ![alt text][image2]  
 
