@@ -2,7 +2,7 @@
   
 Applying inverse kinematics transforms to calculate joint angles for a simulated arm to drop a designated (picked) object into a stationary bin  
   
-This project is part of Udacity's Robotics Software Engineering Nanodegree coursework. Outside of the defined steps taken in this README, it can be assumed that other code belongs to Udacity.  
+This project is part of Udacity's Robotics Software Engineering Nanodegree coursework. Outside of the defined steps taken in this README, it can be assumed that all other code belongs to Udacity.  
   
 ## Project: Kinematics Pick & Place
 ---
@@ -30,10 +30,8 @@ This project is part of Udacity's Robotics Software Engineering Nanodegree cours
 ---
 ### Writeup / README
 
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  
-
-This is my writeup.
-
+#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  
+  
 ### Kinematic Analysis
 #### 1. Run the forward_kinematics demo and evaluate the kr210.urdf.xacro file to perform kinematic analysis of Kuka KR210 robot and derive its DH parameters.
 
